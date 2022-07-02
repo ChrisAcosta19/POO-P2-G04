@@ -17,7 +17,7 @@ public class Persona {
         this.email = email;
     }
     
-    public String mostrarInformacion () {
+    public String mostrarInformacion() {
         return "Nombre: "+nombre+"\nCedula: "+cedula+"\nTelefono: "+telefono+"\nEmail: "+email;
     }
     
