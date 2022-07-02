@@ -7,7 +7,7 @@ package modelo;
 
 /**
  *
- * @author chris
+ * @author Christopher Acosta
  */
 public class Servicio {
     private String nombre;
@@ -35,12 +35,7 @@ public class Servicio {
     
     public void eliminarServicio(){
         this.estado = false;
-    }
-    
-    public String toString(){
-        return "Nombre: "+nombre+ "\nDuracion: "+duracion
-                +"\nPrecio: "+precio+ "\nEstado: "+estado;
-    }    
+    }   
     
     public String getNombre() {
         return nombre;
@@ -57,6 +52,13 @@ public class Servicio {
     public boolean getEstado() {
         return estado;
     }
+    
+    public String toString(){
+        if(estado)
+            return "Nombre: "+nombre+", Duracion: "+duracion+", Precio: "+precio+ ", Estado: Activo";
+        else
+            return "Nombre: "+nombre+", Duracion: "+duracion+", Precio: "+precio+ ", Estado: Inactivo";
+    } 
     
     @Override
     public boolean equals(Object obj){
