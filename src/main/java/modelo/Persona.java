@@ -1,15 +1,17 @@
-package Modelo;
+package modelo;
 
 /**
  *
  * @author Ronald Gaibor
  */
 public class Persona {
+    //Atributos de la clase Persona
     private String cedula;
     private String nombre;
     private String telefono;
     private String email;
     
+    //Constructor de Persona
     public Persona(String cedula, String nombre, String telefono, String email) {
         this.nombre = nombre;
         this.cedula = cedula;
@@ -17,10 +19,12 @@ public class Persona {
         this.email = email;
     }
     
-    public String mostrarInformacion() {
-        return "Nombre: "+nombre+"\nCedula: "+cedula+"\nTelefono: "+telefono+"\nEmail: "+email;
+    //Método toString para mostrar información
+    public String toString() {
+        return "Nombre: "+nombre+", Cedula: "+cedula+", Telefono: "+telefono+", Email: "+email;
     }
     
+    //Getters & Setters
     public String getCedula() {
         return cedula;
     }
@@ -52,5 +56,4 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

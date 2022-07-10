@@ -3,6 +3,11 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Juan Pablo PlÃºas
+ */
+
 public class Cita {
     private String fecha,hora;
     private Cliente cliente;
@@ -11,10 +16,10 @@ public class Cita {
     static Scanner sc = new Scanner(System.in);
     
     public Cita (String fecha , String hora, Cliente cliente, Empleado encargadoServicio){
-        this.fecha=fecha;
-        this.hora=hora;
-        this.cliente=cliente;
-        this.encargadoServicio=encargadoServicio;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.cliente = cliente;
+        this.encargadoServicio = encargadoServicio;
     }
 
     public static boolean crearCita(String fecha, String hora, Cliente cliente, Empleado encargado, ArrayList<Cita> citasAgendadas){
@@ -42,9 +47,8 @@ public class Cita {
         else {
             citasAgendadas.add(cita);
             citaAgendada = true;
-            System.out.println("Cita agendada con éxito");
+            System.out.println("Cita agendada con ï¿½xito");
             return citaAgendada;
-            
         }      
     }
         
@@ -52,7 +56,7 @@ public class Cita {
         boolean fechaExiste = false;
         for (Cita c: citasAgendadas){
             if (fechaConsulta.equals(c.getFecha())){
-                System.out.println(c.mostrarInformacion());
+                System.out.println(c);
                 fechaExiste = true;
             }
         }
@@ -65,7 +69,7 @@ public class Cita {
             int cantidadCitasUsuario=0;
             if (cedulaConsulta.equals(citasAgendadas.get(i).getCliente().getCedula())){
                 indicesCitasUsuario.add(i);
-                System.out.println("ID: "+ i + " " + citasAgendadas.get(i).mostrarInformacion());
+                System.out.println("ID: "+ i + " " + citasAgendadas.get(i));
                 cantidadCitasUsuario++;
                 cedulaExiste = true;
                 
@@ -100,9 +104,10 @@ public class Cita {
         return encargadoServicio;
     }
     
-    public String mostrarInformacion(){
+    @Override
+    public String toString(){
         return "Fecha: "+ fecha + "\nHora: " + hora + 
                 "\nCliente: " + cliente.getNombre() + 
-                "\nEmpleado: " + encargadoServicio.getNombre();
+                "\nEncargado de la cita: " + encargadoServicio.getNombre();
     }
 }

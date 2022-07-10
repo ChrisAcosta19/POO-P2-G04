@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package modelo;
 
@@ -10,16 +11,22 @@ package modelo;
  */
 public class Atencion {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    //Atributos de clase Atencion
+>>>>>>> c17822a (Creacion de paquete test con clase Menu.java)
     private Cita cita;
     private int duracion;
     private Empleado empleadoAtencion;
 
+    //Constructor de la clase
     public Atencion(Cita cita, int duracion, Empleado empleadoAtencion) {
         this.cita = cita;
         this.duracion = duracion;
         this.empleadoAtencion = empleadoAtencion;
     }
     
+    //Getters
     public Cita getCita() {
         return cita;
     }
@@ -28,10 +35,11 @@ public class Atencion {
         return duracion;
     }
 
-    public Empleado getEmpleadoCita() {
+    public Empleado getEmpleadoAtencion() {
         return empleadoAtencion;
     }
     
+    //metodo toString para mostrar informacion
     @Override
     public String toString(){
         return "Cita registrada: "+cita.toString()+"\nduración: "+duracion+" minutos"

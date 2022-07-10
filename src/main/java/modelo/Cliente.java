@@ -1,4 +1,4 @@
-package Modelo;
+package modelo;
 
 /**
  *
@@ -6,26 +6,30 @@ package Modelo;
  */
 
 public class Cliente extends Persona {
+    //Atributos de la clase
     private Persona datosRepresentante;
     
+    //Constructor de la clase
     public Cliente(String cedula, String nombre, String telefono, String email, Persona datosRepresentante) {
         super(cedula, nombre, telefono, email);
         this.datosRepresentante = datosRepresentante;
     }
 
+    //método para cambiar los datos del cliente
     public void editarCliente(String nombre, String telefono, String email, Persona datosRepresentante) {
-        setNombre(nombre);
-        setTelefono(telefono);
-        setEmail(email);
+        this.setNombre(nombre);
+        this.setTelefono(telefono);
+        this.setEmail(email);
         this.datosRepresentante = datosRepresentante;
     }
     
+    //metodo toString para mostrar informacion
     @Override
-    public String mostrarInformacion() {
-        String info = super.mostrarInformacion()+"\nDatos del representante:\n"+datosRepresentante.mostrarInformacion();
-        return info;
+    public String toString() {
+        return super.toString()+"\nDatos del representante:\n"+datosRepresentante+"\n";
     }
     
+    //Getters
     public Persona getDatosRepresentante() {
         return datosRepresentante;
     }
