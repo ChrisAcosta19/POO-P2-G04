@@ -17,7 +17,13 @@ public class Servicio {
     private boolean estado; // false "Inactivo" true "Activo"
 
     //Constructor de la clase
+<<<<<<< HEAD
     public Servicio(String nombre, int duracion, double precio) {
+=======
+    public Servicio(String nombre, int duracion, double precio, boolean estado) {
+<<<<<<< HEAD
+=======
+>>>>>>> c20595f (Implementación de métodos relacionados a la clase Servicio en Usuario)
         this.nombre = nombre;
         this.duracion = duracion;
         this.precio = precio;
@@ -26,6 +32,10 @@ public class Servicio {
        
     //metodo para cambiar los datos de un servicio
     public void editarServicio(String nombre, int duracion, double precio, boolean estado){
+<<<<<<< HEAD
+=======
+>>>>>>> 0a8e3c1 (Implementación de métodos relacionados a la clase Servicio en Usuario)
+>>>>>>> c20595f (Implementación de métodos relacionados a la clase Servicio en Usuario)
         this.nombre = nombre;
         this.duracion = duracion;
         this.precio = precio;

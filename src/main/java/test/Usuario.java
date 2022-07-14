@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package test;
 
 import modelo.*;
@@ -151,5 +152,63 @@ public class Usuario {
 
     public static void salir(){
         System.out.print("Gracias por utilizar el sistema");
+=======
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package test;
+import modelo.*;
+import java.util.*;
+
+public class Usuario {
+    
+    ArrayList<Servicio> servicios;
+    ArrayList<Empleado> empleados;
+    ArrayList<Cliente> clientes;
+    ArrayList<Cita> citas;
+    ArrayList<Atencion> atenciones;
+    
+    public void listarServicios(){
+        System.out.println("Listado de servicios registrados:");
+        for(int i=0;i<servicios.size();i++){
+            System.out.println((i+1)+") "+servicios.get(i));
+        }
+        System.out.println();
+    }
+    
+    public Servicio crearServicio(Scanner sc){
+        String nombre, entradaDatos;        
+        do{
+            System.out.println("Ingrese nombre del servicio:");
+            nombre = sc.nextLine();
+        }while(!Validacion.validarNombre(nombre));
+        
+        int duracion;
+        do{
+            System.out.println("Ingrese duración del servicio:");
+            entradaDatos = sc.nextLine();
+        }while(!Validacion.validarEntero(entradaDatos));
+        duracion = Integer.parseInt(entradaDatos);
+        
+        double precio;
+        do{
+            System.out.println("Ingrese precio del servicio (con punto decimal):");
+            entradaDatos = sc.nextLine();
+        } while(!Validacion.validarDouble(entradaDatos));
+        precio = Double.parseDouble(entradaDatos);
+        
+        int opcion;
+        do{
+            do{
+               System.out.println("Ingrese estado del servicio: (0)Inactivo (1)Activo");
+                entradaDatos = sc.nextLine();
+            } while(!Validacion.validarEntero(entradaDatos));
+            opcion = Integer.parseInt(entradaDatos);
+            if(opcion != 0 && opcion != 1)
+                System.out.println("Opción inválida, ingrese de nuevo");
+        }while(opcion != 0 && opcion != 1);
+        return new Servicio(nombre, duracion, precio, opcion != 0);
+>>>>>>> c20595f (Implementación de métodos relacionados a la clase Servicio en Usuario)
     }
 }
