@@ -473,5 +473,35 @@ public class Usuario {
                 }
         }
     }
+<<<<<<< HEAD
 >>>>>>> de7dcd3 (Implementación de métodos relacionados a la clase Atención en Usuario)
+=======
+    
+    public void inicializarSistema() {
+        servicios = new ArrayList<>();
+        servicios.add(new Servicio("Terapia de Lenguaje",15,22.50, true));
+        servicios.add(new Servicio("Terapia Psicopedagógica",35,37.50, true));
+        servicios.add(new Servicio("Terapia Relajante",20,15.15, true));
+        
+        empleados = new ArrayList<>();
+        empleados.add(new Empleado("0914345665","Juan","0923573567","juan@gmail.com", true));
+        empleados.get(0).getListaServicios().add(servicios.get(0));
+        empleados.get(0).getListaServicios().add(servicios.get(1));
+        empleados.get(0).getListaServicios().add(servicios.get(2));
+        
+        clientes = new ArrayList<>();
+        Persona representante1 = new Persona("0453462369","María","0987445643","maria@gmail.com");
+        clientes.add(new Cliente("0832834824","Mario","0992837659","mario@gmail.com",representante1));
+        Persona representante2 = new Persona("01234567589","Carlos","2346263234","carlos@hotmail.com");
+        clientes.add(new Cliente("0729586956","Melanie","0939872750","melanie@hotmail.com",representante2));
+        
+        citas = new ArrayList<>();
+        citas.add(new Cita("2022-10-01","11:30:00",clientes.get(0),servicios.get(0),empleados.get(0)));
+        citas.add(new Cita("2022-05-21","08:00:00",clientes.get(1),servicios.get(1),empleados.get(0)));
+        citas.add(new Cita("2022-11-11","10:30:00",clientes.get(0),servicios.get(2),empleados.get(0)));
+        
+        atenciones = new ArrayList<>();
+        atenciones.add(new Atencion(citas.get(0),34,empleados.get(0)));
+    }
+>>>>>>> ee6bf1d (Update Usuario.java)
 }
