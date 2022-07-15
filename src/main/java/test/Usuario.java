@@ -211,4 +211,68 @@ public class Usuario {
         return new Servicio(nombre, duracion, precio, opcion != 0);
 >>>>>>> c20595f (Implementación de métodos relacionados a la clase Servicio en Usuario)
     }
+    
+    public boolean validarPersona(Persona persona, Persona per){
+        ArrayList<Persona> personas = new ArrayList<>();
+        for (Empleado e : empleados) {
+            personas.add(e);
+        }
+        for (Cliente c : clientes) {
+            personas.add(c);
+            personas.add(c.getDatosRepresentante());
+        }
+        if (per != null) {
+            personas.remove(per);
+        }
+        if (personas.contains(persona)) {
+            int indice = personas.indexOf(persona);
+            Persona p = personas.get(indice);
+            System.out.println("Alguno de los datos ingresado coincide con los de esta persona: ");
+            System.out.println(new Persona(p.getCedula(), p.getNombre(), p.getTelefono(), p.getEmail()));
+            System.out.println("\nIngrese de nuevo los datos:");
+            return false;
+        } else
+            return true;
+    }
+    
+    public void listarEmpleados(){
+        System.out.println("Listado de empleados registrados:");
+        for(int i=0;i<empleados.size();i++){
+            System.out.println((i+1)+") "+empleados.get(i));
+        }
+    }
+    
+    public Empleado crearEmpleado(Scanner sc, Persona p){
+        String nombre, cedula, telefono, email, entradaDatos;
+        Empleado empleado; int opcion;
+        do{
+            do{
+                System.out.println("Ingrese cedula del empleado (10 dígitos):");
+                cedula = sc.nextLine();
+            }while(!Validacion.validarEntero(cedula) || cedula.length()!=10);
+            do{
+                System.out.println("Ingrese nombre del empleado:");
+                nombre = sc.nextLine();
+            }while(!Validacion.validarNombre(nombre));
+            do{
+                System.out.println("Ingrese telefono del empleado (10 dígitos):");
+                telefono = sc.nextLine();
+            }while(!Validacion.validarEntero(telefono) || telefono.length()!=10);
+            do{
+                System.out.println("Ingrese email del empleado:");
+                email = sc.nextLine();
+            }while(!Validacion.validarEmail(email));
+            do{
+                do{
+                    System.out.println("Ingrese estado del empleado: (0)Inactivo (1)Activo");
+                    entradaDatos = sc.nextLine();
+                }while(!Validacion.validarEntero(entradaDatos));
+                opcion = Integer.parseInt(entradaDatos);
+                if(opcion != 0 && opcion != 1)
+                    System.out.println("Opción inválida, ingrese de nuevo");
+            }while(opcion != 0 && opcion != 1);
+            empleado = new Empleado (cedula, nombre, telefono, email, opcion != 0);
+        }while(!validarPersona(empleado, p)); 
+        return empleado;
+    }
 }
