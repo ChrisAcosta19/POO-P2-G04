@@ -173,6 +173,7 @@ public class Usuario {
     ArrayList<Cita> citas;
     ArrayList<Atencion> atenciones;
     
+    //Operaciones de Menú Servicio
     public void listarServicios(){
         System.out.println("Listado de servicios registrados:");
         for(int i=0;i<servicios.size();i++){

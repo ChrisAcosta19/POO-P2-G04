@@ -16,6 +16,7 @@ public class Menu {
         System.out.println("Ingrese una opción: ");
     }
     
+<<<<<<< HEAD
     public static void mostrarMenuServicio(){
         System.out.println("Menú de Servicio:");
         System.out.println("1. Listar Servicios");
@@ -24,6 +25,47 @@ public class Menu {
         System.out.println("4. Eliminar Servicio");
         System.out.println("5. Salir al menú principal");
         System.out.println("Ingrese una opción: ");
+=======
+    public static void menuServicio(Scanner sc, Usuario usu){
+        String entradaDatos; Servicio servicio;
+        int opcion;
+        do{
+            System.out.println("Menú de Servicio:");
+            System.out.println("1. Listar Servicios");
+            System.out.println("2. Agregar Servicio");
+            System.out.println("3. Editar Servicio");
+            System.out.println("4. Eliminar Servicio");
+            System.out.println("5. Salir al menú principal");
+            do{
+                System.out.println("Ingrese una opción: ");
+                entradaDatos = sc.nextLine();
+            }while(!Validacion.validarEntero(entradaDatos));
+            opcion = Integer.parseInt(entradaDatos);
+            switch(opcion){
+                case 1:
+                    usu.listarServicios();
+                    break;
+                case 2:
+                    servicio = usu.crearServicio(sc);
+                    usu.servicios.add(servicio);
+                    break;
+                case 3:
+                    servicio = Main.buscarServicio(sc, usu);
+                    Servicio s = usu.crearServicio(sc);
+                    servicio.editarServicio(s);
+                    break;
+                case 4:
+                    servicio = Main.buscarServicio(sc, usu);
+                    servicio.eliminarServicio();
+                    System.out.println("El Servicio "+servicio.getNombre()+" ha sido cambiado a Inactivo");
+                case 5:
+                    System.out.println("Regresando al menú princial\n");
+                    break;
+                default:
+                    System.out.println("Opción inválida, ingrese de nuevo\n");
+            }
+        } while (opcion != 5);
+>>>>>>> 64af89d (Actualización Menú Servicios)
     }
     
     public static void mostrarMenuEmpleado(){
