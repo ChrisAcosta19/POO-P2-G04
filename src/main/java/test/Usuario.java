@@ -404,5 +404,73 @@ public class Usuario {
                 System.out.println(cita);
         }
     }
+<<<<<<< HEAD
 >>>>>>> d271865 (Implementacion metodos relacionados a la clase Cita en Usuario)
+=======
+    
+    //Operaciones de Menú Atención
+    public void consultarAtenciones(Scanner sc, int opcion){
+        ArrayList<Atencion> listaAtenciones = new ArrayList<>();
+        String cedula, fecha;
+        switch(opcion){
+            case 1:
+                listarEmpleados();
+                do{
+                    System.out.println("Ingrese la cédula del empleado: ");
+                    cedula = sc.nextLine();
+                } while(!Validacion.validarEntero(cedula));
+                Empleado empleado = new Empleado(cedula);
+                for(Atencion a: atenciones){
+                    if(a.getEmpleadoAtencion().equals(empleado))
+                        listaAtenciones.add(a);
+                }
+                if(listaAtenciones.isEmpty()){
+                    if(!empleados.contains(empleado))
+                        System.out.println("No existe un empleado con esa cédula\n");
+                    else
+                        System.out.println("No hay atenciones registradas con esa cédula de empleado");
+                }else{
+                    System.out.println("Las atenciones de ese empleado fueron: ");
+                    for(Atencion a: listaAtenciones)
+                        System.out.println(a + "\n");
+                }
+                break;
+            case 2:
+                listarClientes();
+                do{
+                    System.out.println("Ingrese la cédula del cliente: ");
+                    cedula = sc.nextLine();
+                } while(!Validacion.validarEntero(cedula));
+                Cliente cliente = new Cliente(cedula);
+                for(Atencion a: atenciones){
+                    if(a.getCita().getCliente().equals(cliente))
+                        listaAtenciones.add(a);
+                }
+                if(listaAtenciones.isEmpty()){
+                    if(!clientes.contains(cliente))
+                        System.out.println("No existe un cliente con esa cédula\n");
+                    else
+                        System.out.println("No hay atenciones registradas a ese cliente");
+                }else{
+                    System.out.println("Las atenciones a ese cliente fueron: ");
+                    for(Atencion a: listaAtenciones)
+                        System.out.println(a + "\n");
+                }
+                break;
+            default:
+                fecha = Main.crearFecha(sc);
+                for(Atencion a: atenciones){
+                    if(a.getCita().getFecha().equals(fecha))
+                        listaAtenciones.add(a);
+                }
+                if(listaAtenciones.isEmpty()){
+                    System.out.println("No hay atenciones registradas en esa fecha");
+                }else{
+                    System.out.println("Las atenciones en esa fecha fueron: ");
+                    for(Atencion a: listaAtenciones)
+                        System.out.println(a + "\n");
+                }
+        }
+    }
+>>>>>>> de7dcd3 (Implementación de métodos relacionados a la clase Atención en Usuario)
 }
