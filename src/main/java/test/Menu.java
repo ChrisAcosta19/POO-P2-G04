@@ -253,11 +253,86 @@ public class Menu {
 >>>>>>> 898e544 (Agregado metodo menuCita en clase Menu)
     }
     
+<<<<<<< HEAD
     public static void mostrarMenuAtencion(){
         System.out.println("Menú de Atenciones:");
         System.out.println("1. Registrar atencion");
         System.out.println("2. Consultar Atencion");
         System.out.println("3. Salir al menú principal");
         System.out.println("Ingrese una opción: ");
+=======
+    public static void menuAtencion(Scanner sc, Usuario usu){
+        String entradaDatos, cedula;
+        int opcion; Empleado empleado;
+        do{
+            System.out.println("Menú de Atenciones:");
+            System.out.println("1. Registrar atencion");
+            System.out.println("2. Consultar Atencion");
+            System.out.println("3. Salir al menú principal");
+            do {
+                System.out.println("Ingrese una opción: ");
+                entradaDatos = sc.nextLine();
+            } while (!Validacion.validarEntero(entradaDatos));
+            opcion = Integer.parseInt(entradaDatos);
+            switch (opcion) {
+                case 1:
+                    usu.listarClientes();
+                    do {
+                        System.out.println("Ingrese cédula del cliente:");
+                        cedula = sc.nextLine();
+                    } while (!Validacion.validarEntero(cedula));
+                    ArrayList<Cita> citasPendientes = usu.buscarCitasPendientes(cedula);
+                    int i;
+                    if (!citasPendientes.isEmpty()) {
+                        System.out.println("Escoja 1 de las citas que no han sido registradas:");
+                        for (i = 0; i < citasPendientes.size(); i++) {
+                            System.out.println((i + 1) + ") " + citasPendientes.get(i));
+                        }
+                        do {
+                            do {
+                                System.out.println("Ingrese su opción: ");
+                                entradaDatos = sc.nextLine();
+                            } while (!Validacion.validarEntero(entradaDatos));
+                            opcion = Integer.parseInt(entradaDatos);
+                            if (opcion < 1 || opcion > i) {
+                                System.out.println("Opción inválida, ingrese de nuevo\n");
+                            }
+                        } while (opcion < 1 || opcion > i);
+                        Cita cita = citasPendientes.get(opcion - 1);
+                        do {
+                            System.out.println("Ingrese la duración de la atención:");
+                            entradaDatos = sc.nextLine();
+                        } while (!Validacion.validarEntero(entradaDatos));
+                        int duracion = Integer.parseInt(entradaDatos);
+                        empleado = Main.buscarEmpleado(sc, usu);
+                        usu.atenciones.add(new Atencion(cita, duracion, empleado));
+                    } else {
+                        System.out.println("Todas las citas del cliente " + cedula + " han sido atendidas");
+                    }
+                    break;
+                case 2:
+                    do {
+                        do {
+                            System.out.println("1) Consultar por cédula de Empleado");
+                            System.out.println("2) Consultar por cédula de Cliente");
+                            System.out.println("3) Consultar por fecha");
+                            System.out.println("Ingrese su opción: ");
+                            entradaDatos = sc.nextLine();
+                        } while (!Validacion.validarEntero(entradaDatos));
+                        opcion = Integer.parseInt(entradaDatos);
+                        if (opcion < 1 || opcion > 3) {
+                            System.out.println("Opcion inválida, ingrese de nuevo\n");
+                        }
+                    } while (opcion < 1 || opcion > 3);
+                    usu.consultarAtenciones(sc, opcion);
+                    break;
+                case 3:
+                    System.out.println("Regresando al menú princial\n");
+                    break;
+                default:
+                    System.out.println("Opción inválida, ingrese de nuevo\n");
+            }
+        } while (opcion != 3);
+>>>>>>> b797361 (Actualización Menú Atención)
     }
 }
