@@ -147,6 +147,7 @@ public class Menu {
 >>>>>>> c9a8aad (Agregado metodo menuServicio en clase Menu)
     }
     
+<<<<<<< HEAD
     public static void mostrarMenuCliente(){
         System.out.println("Menú de Cliente:");
         System.out.println("1. Listar Clientes");
@@ -154,6 +155,43 @@ public class Menu {
         System.out.println("3. Editar Cliente");
         System.out.println("4. Salir al menú principal");
         System.out.println("Ingrese una opción: ");
+=======
+    public static void menuCliente(Scanner sc, Usuario usu){
+        String entradaDatos;
+        int opcion; Cliente cliente;
+        do{
+            System.out.println("Menú de Cliente:");
+            System.out.println("1. Listar Clientes");
+            System.out.println("2. Agregar Cliente");
+            System.out.println("3. Editar Cliente");
+            System.out.println("4. Salir al menú principal");
+            do {
+                System.out.println("Ingrese una opción: ");
+                entradaDatos = sc.nextLine();
+            } while (!Validacion.validarEntero(entradaDatos));
+            opcion = Integer.parseInt(entradaDatos);
+            switch (opcion) {
+                case 1:
+                    usu.listarClientes();
+                    break;
+                case 2:
+                    cliente = usu.crearCliente(sc, null, null);
+                    usu.clientes.add(cliente);
+                    break;
+                case 3:
+                    cliente = Main.buscarCliente(sc, usu);
+                    Persona representante = cliente.getDatosRepresentante();
+                    Cliente c = usu.crearCliente(sc, cliente, representante);
+                    cliente.editarCliente(c);
+                    break;
+                case 4:
+                    System.out.println("Regresando al menú princial\n");
+                    break;
+                default:
+                    System.out.println("Opción inválida, ingrese de nuevo\n");
+            }
+        } while (opcion != 4);
+>>>>>>> 99375af (Actualización Menú Cliente)
     }
     
     public static void mostrarMenuCita(){
