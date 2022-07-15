@@ -279,6 +279,7 @@ public class Usuario {
         }while(!validarPersona(empleado, p)); 
         return empleado;
     }
+<<<<<<< HEAD
     
     //Operaciones de Menú Clientes
     public void listarClientes(){
@@ -334,4 +335,6 @@ public class Usuario {
         return new Cliente(cedula, nombre, telefono, email, representante);
     }
     
+=======
+>>>>>>> 38c5eea (Implementación de métodos relacionados a la clase Empleado en Usuario)
 }

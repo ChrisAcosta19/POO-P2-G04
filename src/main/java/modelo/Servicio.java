@@ -23,6 +23,7 @@ public class Servicio {
     public Servicio(String nombre, int duracion, double precio, boolean estado) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c20595f (Implementación de métodos relacionados a la clase Servicio en Usuario)
         this.nombre = nombre;
@@ -30,11 +31,16 @@ public class Servicio {
         this.precio = precio;
         this.estado = true;
 =======
+=======
+>>>>>>> 38c5eea (Implementación de métodos relacionados a la clase Empleado en Usuario)
         this.nombre = nombre;
         this.duracion = duracion;
         this.precio = precio;
         this.estado = estado;
+<<<<<<< HEAD
 >>>>>>> aa401a2 (Implementación de métodos relacionados a la clase Servicio en Usuario)
+=======
+>>>>>>> 38c5eea (Implementación de métodos relacionados a la clase Empleado en Usuario)
     }
        
     //metodo para cambiar los datos de un servicio
