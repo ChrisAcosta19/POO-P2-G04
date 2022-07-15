@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 package test;
 
 import modelo.*;
@@ -157,6 +158,9 @@ public class Usuario {
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+=======
+
+>>>>>>> 37a7c3b (Implementación de métodos relacionados a la clase Cliente en Usuario)
 package test;
 import modelo.*;
 import java.util.*;
@@ -275,4 +279,59 @@ public class Usuario {
         }while(!validarPersona(empleado, p)); 
         return empleado;
     }
+    
+    //Operaciones de Menú Clientes
+    public void listarClientes(){
+        System.out.println("Listado de clientes registrados:");
+        for(int i=0;i<clientes.size();i++){
+            System.out.println((i+1)+") "+clientes.get(i));
+        }
+    }
+    
+    public Cliente crearCliente(Scanner sc, Persona p, Persona rep){
+        String nombre, cedula, telefono, email;
+        Persona persona;
+        do{
+            do{
+                System.out.println("Ingrese cedula del cliente (10 dígitos):");
+                cedula = sc.nextLine();
+            } while(!Validacion.validarEntero(cedula) || cedula.length()!=10);
+            do{
+                System.out.println("Ingrese nombre del cliente:");
+                nombre = sc.nextLine();
+            }while(!Validacion.validarNombre(nombre));
+            do{
+                System.out.println("Ingrese telefono del cliente (10 dígitos):");
+                telefono = sc.nextLine();
+            } while(!Validacion.validarEntero(telefono) || telefono.length()!=10);
+            do{
+                System.out.println("Ingrese email del cliente:");
+                email = sc.nextLine();
+            }while(!Validacion.validarEmail(email));
+            persona = new Persona(cedula, nombre, telefono, email);
+        } while(!validarPersona(persona, p));
+        String nombreR, cedulaR, telefonoR, emailR;
+        Persona representante;
+        do{
+            do{
+                System.out.println("Ingrese cedula del Representante (10 dígitos):");
+                cedulaR = sc.nextLine();
+            }while(!Validacion.validarEntero(cedulaR) || cedulaR.length()!=10);
+            do{
+                System.out.println("Ingrese nombre del Representante:");
+                nombreR = sc.nextLine();
+            }while(!Validacion.validarNombre(nombreR));
+            do{
+                System.out.println("Ingrese telefono del Representante (10 dígitos):");
+                telefonoR = sc.nextLine();
+            }while(!Validacion.validarEntero(telefonoR) || telefonoR.length()!=10);
+            do{
+                System.out.println("Ingrese email del Representante:");
+                emailR = sc.nextLine();
+            }while(!Validacion.validarEmail(emailR));
+            representante = new Persona(cedulaR, nombreR, telefonoR, emailR);
+        } while(!validarPersona(representante, rep));
+        return new Cliente(cedula, nombre, telefono, email, representante);
+    }
+    
 }
