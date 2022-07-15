@@ -335,6 +335,74 @@ public class Usuario {
         return new Cliente(cedula, nombre, telefono, email, representante);
     }
     
+<<<<<<< HEAD
 =======
 >>>>>>> 38c5eea (Implementación de métodos relacionados a la clase Empleado en Usuario)
+=======
+    public void crearCita(Cita cita){
+        if(!citas.contains(cita)){
+            System.out.println("Datos de la cita creada:");
+            System.out.println(cita);
+            citas.add(cita);
+        } else {
+            System.out.println("No se pudo crear la cita por una de las siguientes razones:");
+            System.out.println("1. Ya existe otra cita con ese encargado a esa fecha y hora");
+            System.out.println("2. El cliente ya tiene otra cita a esa fecha y hora");
+        }
+    }
+    
+    public ArrayList<Cita> buscarCitasPendientes(String cedula){
+        Cliente cliente = new Cliente(cedula);
+        ArrayList<Cita> citasAtendidas = new ArrayList<>();
+        for(Atencion atencion: atenciones){
+            citasAtendidas.add(atencion.getCita());
+        }
+        ArrayList<Cita> citasPendientes = new ArrayList<>();
+        for(Cita cita: citas){
+            if(!citasAtendidas.contains(cita) && cita.getCliente().equals(cliente)){
+                citasPendientes.add(cita);
+            }
+        }
+        return citasPendientes;
+    }
+    
+    public void eliminarCita(Scanner sc, String cedula){
+        ArrayList<Cita> citasPendientes = buscarCitasPendientes(cedula);
+        if(citasPendientes.isEmpty()){
+            System.out.println("El cliente con cédula " +cedula+ " no tiene citas pendientes");
+        }else{
+            int i, opcion; String entradaDatos;
+            System.out.println("Las citas pendientes del cliente con cédula "+ cedula +" son:");
+            for(i=0; i<citasPendientes.size(); i++){
+                System.out.println((i+1)+")"+citasPendientes.get(i));
+            }
+            do{
+                do{
+                    System.out.println("Ingrese su opción: ");
+                    entradaDatos = sc.nextLine();
+                }while(!Validacion.validarEntero(entradaDatos));
+                opcion = Integer.parseInt(entradaDatos);
+                if(opcion < 1 || opcion > i)
+                    System.out.println("Opcion fuera de rango, ingrese de nuevo");
+            }while(opcion < 1 || opcion > i);
+            citas.remove(citasPendientes.get(opcion - 1));
+        }
+    }
+    
+    public void consultarCitas(String fecha){
+        ArrayList<Cita> citasxFecha = new ArrayList<>();
+        for(Cita cita: citas){
+            if(cita.getFecha().equals(fecha)) {
+                citasxFecha.add(cita);
+            }
+        }
+        if(citasxFecha.isEmpty()){
+            System.out.println("No hay citas para esta fecha");
+        }else{
+            System.out.println("Las citas para el día "+fecha+" son:");
+            for(Cita cita: citasxFecha)
+                System.out.println(cita);
+        }
+    }
+>>>>>>> d271865 (Implementacion metodos relacionados a la clase Cita en Usuario)
 }
