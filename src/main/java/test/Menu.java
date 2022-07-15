@@ -14,6 +14,14 @@ public class Menu {
         System.out.println("5. Atenciones");
         System.out.println("6. Salir");
         System.out.println("Ingrese una opción: ");
+<<<<<<< HEAD
+=======
+        do{
+            System.out.println("Ingrese una opción: ");
+            entradaDatos = sc.nextLine();
+        } while(!Validacion.validarEntero(entradaDatos));
+        return Integer.parseInt(entradaDatos);
+>>>>>>> 22fc0c2 (Update Menu.java)
     }
     
 <<<<<<< HEAD
