@@ -3,7 +3,7 @@ import modelo.*;
 import java.util.*;
 
 /*
-Clase main con las funcionalidades de:
+Clase Main con las funcionalidades de:
 
 Buscar Servicio, Empleado y Cliente
 Crear Fecha y Hora
