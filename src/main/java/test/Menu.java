@@ -194,6 +194,7 @@ public class Menu {
 >>>>>>> 99375af (Actualización Menú Cliente)
     }
     
+<<<<<<< HEAD
     public static void mostrarMenuCita(){
         System.out.println("Menú de Citas:");
         System.out.println("1. Agregar Cita");
@@ -201,6 +202,55 @@ public class Menu {
         System.out.println("3. Eliminar Citas");
         System.out.println("4. Salir al menú principal");
         System.out.println("Ingrese una opción: ");
+=======
+    public static void menuCita(Scanner sc, Usuario usu){
+        String entradaDatos, fecha, hora, cedula; Servicio servicio;
+        int opcion; Cliente cliente; Empleado empleado;
+        do{
+            System.out.println("Menú de Citas:");
+            System.out.println("1. Agregar Cita");
+            System.out.println("2. Consultar citas por fecha");
+            System.out.println("3. Eliminar Citas");
+            System.out.println("4. Salir al menú principal");
+            do {
+                System.out.println("Ingrese una opción: ");
+                entradaDatos = sc.nextLine();
+            } while (!Validacion.validarEntero(entradaDatos));
+            opcion = Integer.parseInt(entradaDatos);
+            switch (opcion) {
+                case 1:
+                    fecha = Main.crearFecha(sc);
+                    hora = Main.crearHora(sc);
+                    cliente = Main.buscarCliente(sc, usu);
+                    servicio = Main.buscarServicio(sc, usu);
+                    empleado = Main.buscarEmpleado(sc, usu);
+                    Cita cita = new Cita(fecha, hora, cliente, servicio, empleado);
+                    usu.crearCita(cita);
+                    break;
+                case 2:
+                    fecha = Main.crearFecha(sc);
+                    usu.consultarCitas(fecha);
+                    break;
+                case 3:
+                    usu.listarClientes();
+                    do {
+                        System.out.println("Ingrese la cédula del cliente: ");
+                        cedula = sc.nextLine();
+                        cliente = new Cliente(cedula);
+                        if (!usu.clientes.contains(cliente)) {
+                            System.out.println("No existe un cliente con esa cédula, ingrese de nuevo\n");
+                        }
+                    } while (!usu.clientes.contains(cliente));
+                    usu.eliminarCita(sc, cedula);
+                    break;
+                case 4:
+                    System.out.println("Regresando al menú princial\n");
+                    break;
+                default:
+                    System.out.println("Opción inválida, ingrese de nuevo\n");
+            }
+        } while (opcion != 4);
+>>>>>>> 898e544 (Agregado metodo menuCita en clase Menu)
     }
     
     public static void mostrarMenuAtencion(){
