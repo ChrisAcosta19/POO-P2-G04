@@ -14,13 +14,18 @@ public class Cliente extends Persona {
         super(cedula, nombre, telefono, email);
         this.datosRepresentante = datosRepresentante;
     }
+    
+    public Cliente(String cedula){
+        super(cedula);
+        this.datosRepresentante = new Persona("N/A");
+    }
 
     //método para cambiar los datos del cliente
-    public void editarCliente(String nombre, String telefono, String email, Persona datosRepresentante) {
-        this.setNombre(nombre);
-        this.setTelefono(telefono);
-        this.setEmail(email);
-        this.datosRepresentante = datosRepresentante;
+    public void editarCliente(Cliente c){
+        this.setNombre(c.getNombre());
+        this.setTelefono(c.getTelefono());
+        this.setEmail(c.getEmail());
+        this.datosRepresentante = c.datosRepresentante;
     }
     
     //metodo toString para mostrar informacion

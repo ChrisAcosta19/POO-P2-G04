@@ -13,15 +13,22 @@ public class Persona {
     
     //Constructores de Persona
     public Persona(String cedula, String nombre, String telefono, String email) {
-        this.nombre = nombre;
         this.cedula = cedula;
+        this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
     }
     
+    public Persona(String cedula){
+        this.cedula = cedula;
+        this.nombre = "N/A";
+        this.telefono = "N/A";
+        this.email = "N/A";
+    }
+    
     //Método toString para mostrar información
     public String toString() {
-        return "Nombre: "+nombre+", Cedula: "+cedula+", Telefono: "+telefono+", Email: "+email;
+        return "Cedula: "+cedula+", Nombre: "+nombre+", Telefono: "+telefono+", Email: "+email;
     }
     
     //Getters & Setters
@@ -56,8 +63,6 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-<<<<<<< HEAD
-=======
     
     //metodo equals para comparar si dos personas son iguales
     /*retornara verdadero si coinciden en al menos uno de los
@@ -76,5 +81,4 @@ public class Persona {
         }
         return false;
     }
->>>>>>> 768ccf0 (Documentacion del codigo)
 }

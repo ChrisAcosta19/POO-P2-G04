@@ -1,17 +1,15 @@
 package test;
+import java.util.*;
+import modelo.*;
 
 /**
  *
  * @author Christopher Acosta
  */
 public class Menu {
-<<<<<<< HEAD
-    public static void mostrarMenuPrincipal(){
-=======
     //método para mostrar Menú principal y pedir que escoja una opción
     public static int menuPrincipal(Scanner sc){
         String entradaDatos;
->>>>>>> 768ccf0 (Documentacion del codigo)
         System.out.println("Menú principal");
         System.out.println("1. Servicios");
         System.out.println("2. Empleados");
@@ -19,31 +17,14 @@ public class Menu {
         System.out.println("4. Citas");
         System.out.println("5. Atenciones");
         System.out.println("6. Salir");
-        System.out.println("Ingrese una opción: ");
-<<<<<<< HEAD
-=======
         do{
             System.out.println("Ingrese una opción: ");
             entradaDatos = sc.nextLine();
         } while(!Validacion.validarEntero(entradaDatos));
         return Integer.parseInt(entradaDatos);
->>>>>>> 22fc0c2 (Update Menu.java)
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public static void mostrarMenuServicio(){
-        System.out.println("Menú de Servicio:");
-        System.out.println("1. Listar Servicios");
-        System.out.println("2. Agregar Servicio");
-        System.out.println("3. Editar Servicio");
-        System.out.println("4. Eliminar Servicio");
-        System.out.println("5. Salir al menú principal");
-        System.out.println("Ingrese una opción: ");
-=======
-=======
     //método para mostrar Menú Servicio y pedir que escoja una opción
->>>>>>> 768ccf0 (Documentacion del codigo)
     public static void menuServicio(Scanner sc, Usuario usu){
         String entradaDatos; Servicio servicio;
         int opcion;
@@ -83,23 +64,9 @@ public class Menu {
                     System.out.println("Opción inválida, ingrese de nuevo\n");
             }
         } while (opcion != 5);
->>>>>>> 64af89d (Actualización Menú Servicios)
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public static void mostrarMenuEmpleado(){
-        System.out.println("Menú de Empleado:");
-        System.out.println("1. Listar Empleados");
-        System.out.println("2. Agregar Empleado");
-        System.out.println("3. Editar Empleado");
-        System.out.println("4. Eliminar Empleado");
-        System.out.println("5. Salir al menú principal");
-        System.out.println("Ingrese una opción: ");
-=======
-=======
     //método para mostrar Menú Empleado y pedir que escoja una opción
->>>>>>> 768ccf0 (Documentacion del codigo)
     public static void menuEmpleado(Scanner sc, Usuario usu){
         String entradaDatos; Servicio servicio;
         int opcion; Empleado empleado;
@@ -141,10 +108,12 @@ public class Menu {
                         case 1: //agregar el servicio elegido al empleado
                             servicio = Main.buscarServicio(sc, usu);
                             empleado.getListaServicios().add(servicio);
+                            System.out.println("Se agregó "+servicio.getNombre()+" a la lista de servicios de "+empleado.getNombre());
                             break;
                         case 2: //retirar el servicio elegido del empleado
                             servicio = Main.buscarServicio(sc, usu);
                             empleado.getListaServicios().remove(servicio);
+                            System.out.println("Se retiró "+servicio.getNombre()+" a la lista de servicios de "+empleado.getNombre());
                             break;
                         case 3:
                             System.out.println("No se han modificado los servicios del empleado");
@@ -153,7 +122,7 @@ public class Menu {
                             System.out.println("Opción inválida, ingrese de nuevo\n");
                     }
                 } while (opcion < 1 || opcion > 3);
-                break;
+                    break;
                 case 4: //eliminar un empleado existente
                     empleado = Main.buscarEmpleado(sc, usu);
                     empleado.eliminarEmpleado();
@@ -166,22 +135,9 @@ public class Menu {
                     System.out.println("Opción inválida, ingrese de nuevo\n");
                 }
         }while(opcion != 5);
->>>>>>> c9a8aad (Agregado metodo menuServicio en clase Menu)
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public static void mostrarMenuCliente(){
-        System.out.println("Menú de Cliente:");
-        System.out.println("1. Listar Clientes");
-        System.out.println("2. Agregar Cliente");
-        System.out.println("3. Editar Cliente");
-        System.out.println("4. Salir al menú principal");
-        System.out.println("Ingrese una opción: ");
-=======
-=======
     //método para mostrar Menú Cliente y pedir que escoja una opción
->>>>>>> 768ccf0 (Documentacion del codigo)
     public static void menuCliente(Scanner sc, Usuario usu){
         String entradaDatos;
         int opcion; Cliente cliente;
@@ -218,22 +174,9 @@ public class Menu {
                     System.out.println("Opción inválida, ingrese de nuevo\n");
             }
         } while (opcion != 4);
->>>>>>> 99375af (Actualización Menú Cliente)
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public static void mostrarMenuCita(){
-        System.out.println("Menú de Citas:");
-        System.out.println("1. Agregar Cita");
-        System.out.println("2. Consultar citas por fecha");
-        System.out.println("3. Eliminar Citas");
-        System.out.println("4. Salir al menú principal");
-        System.out.println("Ingrese una opción: ");
-=======
-=======
     //método para mostrar Menú Cita y pedir que escoja una opción
->>>>>>> 768ccf0 (Documentacion del codigo)
     public static void menuCita(Scanner sc, Usuario usu){
         String entradaDatos, fecha, hora, cedula; Servicio servicio;
         int opcion; Cliente cliente; Empleado empleado;
@@ -281,21 +224,9 @@ public class Menu {
                     System.out.println("Opción inválida, ingrese de nuevo\n");
             }
         } while (opcion != 4);
->>>>>>> 898e544 (Agregado metodo menuCita en clase Menu)
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public static void mostrarMenuAtencion(){
-        System.out.println("Menú de Atenciones:");
-        System.out.println("1. Registrar atencion");
-        System.out.println("2. Consultar Atencion");
-        System.out.println("3. Salir al menú principal");
-        System.out.println("Ingrese una opción: ");
-=======
-=======
     //método para mostrar Menú Atencion y pedir que escoja una opción
->>>>>>> 768ccf0 (Documentacion del codigo)
     public static void menuAtencion(Scanner sc, Usuario usu){
         String entradaDatos, cedula;
         int opcion; Empleado empleado;
@@ -360,6 +291,7 @@ public class Menu {
                         }
                     } while (opcion < 1 || opcion > 3);
                     usu.consultarAtenciones(sc, opcion); //se envía la opción elegida al método consultarAtenciones
+                    opcion = 0;
                     break;
                 case 3:
                     System.out.println("Regresando al menú princial\n");
@@ -368,6 +300,5 @@ public class Menu {
                     System.out.println("Opción inválida, ingrese de nuevo\n");
             }
         } while (opcion != 3);
->>>>>>> b797361 (Actualización Menú Atención)
     }
 }

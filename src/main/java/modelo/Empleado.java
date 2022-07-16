@@ -17,14 +17,19 @@ public class Empleado extends Persona {
         this.estado = estado;
         this.listaServicios = new ArrayList<>();
     }
+    
+    public Empleado(String cedula) {
+        super(cedula);
+        this.listaServicios = new ArrayList<>();
+    }
 
     //metodo para cambiar los datos del empleado
-    public void editarEmpleado(String cedula, String nombre, String telefono, String email, boolean estado) {
-        this.setCedula(cedula);
-        this.setNombre(nombre);
-        this.setTelefono(telefono);
-        this.setEmail(email);
-        this.estado = estado;
+    public void editarEmpleado(Empleado e){
+        this.setCedula(e.getCedula());
+        this.setNombre(e.getNombre());
+        this.setTelefono(e.getTelefono());
+        this.setEmail(e.getEmail());
+        this.estado = e.estado;
     }
     
     //metodo que cambiar estado del empleado a Inactivo
@@ -34,8 +39,12 @@ public class Empleado extends Persona {
     
     //metodo toString para mostrar informacion
     @Override
-    public String toString() {
-        return super.toString()+", Estado: "+(estado?"Activo":"Inactivo");
+    public String toString(){
+        String servicios = "\nServicios del empleado "+getNombre()+":";
+        for(Servicio s: listaServicios){
+            servicios += "\n" + s.getNombre();
+        }
+        return super.toString()+", Estado: "+(estado?"Activo":"Inactivo")+servicios+"\n";
     }
     
     //Getters

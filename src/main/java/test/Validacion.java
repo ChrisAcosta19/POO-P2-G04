@@ -15,7 +15,7 @@ public class Validacion {
     y Long acepta valores de esa longitud*/
     public static boolean validarEntero(String entrada){
         try{
-            int entero = Integer.parseInt(entrada);
+            Long.parseLong(entrada);
             return true;
         } catch (Exception e) {
             System.out.println("Por favor ingrese un entero\n");
@@ -26,7 +26,7 @@ public class Validacion {
     //metodo que recibe un String y trata de convertirlo a double
     public static boolean validarDouble(String entrada){
         try{
-            double real = Double.parseDouble(entrada);
+            Double.parseDouble(entrada);
             return true;
         } catch (Exception e) {
             System.out.println("Por favor ingrese un numero con decimales\n");
@@ -42,7 +42,7 @@ public class Validacion {
     ingrese del 01 al 28 si el año no es bisiesto y del 01 al 29 caso contrario*/
     public static boolean validarFecha(String fecha){
         try{
-            LocalDate date = LocalDate.parse(fecha);
+            LocalDate.parse(fecha);
             return true;
 	} catch (Exception e) {
             System.out.println("Fecha no válida, ingrese de nuevo\n");
@@ -57,11 +57,7 @@ public class Validacion {
     entre 00 y 23, los minutos vayan del 00 al 59 y los segundos de igual forma*/
     public static boolean validarHora(String hora){
         try{
-<<<<<<< HEAD
-            LocalTime time = LocalTime.parse(horario);
-=======
             LocalTime.parse(hora);
->>>>>>> 768ccf0 (Documentacion del codigo)
             return true;
 	} catch (Exception e) {
             System.out.println("Hora no válida, ingrese de nuevo\n");
