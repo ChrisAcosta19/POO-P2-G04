@@ -166,14 +166,14 @@ import modelo.*;
 import java.util.*;
 
 public class Usuario {
-    
+    //Listas para guardar los objetos creados
     ArrayList<Servicio> servicios;
     ArrayList<Empleado> empleados;
     ArrayList<Cliente> clientes;
     ArrayList<Cita> citas;
     ArrayList<Atencion> atenciones;
     
-    //Operaciones de Menú Servicio
+    //método para mostrar todos los servicios de la lista servicios
     public void listarServicios(){
         System.out.println("Listado de servicios registrados:");
         for(int i=0;i<servicios.size();i++){
@@ -182,6 +182,7 @@ public class Usuario {
         System.out.println();
     }
     
+    //método para crear objetos tipo Servicio
     public Servicio crearServicio(Scanner sc){
         String nombre, entradaDatos;        
         do{
@@ -217,6 +218,10 @@ public class Usuario {
 >>>>>>> c20595f (Implementación de métodos relacionados a la clase Servicio en Usuario)
     }
     
+    //método para ver si los datos de una persona coinciden con los de otra
+    /*El parámetro Persona per se utiliza para quitar ese objeto de la lista personas
+    Esto se hace para poder editar los datos de una persona que ya se encuentra en
+    dicha lista, sino daría que coincide con una de las personas de la lista*/
     public boolean validarPersona(Persona persona, Persona per){
         ArrayList<Persona> personas = new ArrayList<>();
         for (Empleado e : empleados) {
@@ -240,6 +245,7 @@ public class Usuario {
             return true;
     }
     
+    //método para mostrar todos los empleados de la lista empleados
     public void listarEmpleados(){
         System.out.println("Listado de empleados registrados:");
         for(int i=0;i<empleados.size();i++){
@@ -247,6 +253,8 @@ public class Usuario {
         }
     }
     
+    //método para crear objetos tipo Empleado
+    /*Persona p será recibido por el parámetro Persona per de validarPersona*/
     public Empleado crearEmpleado(Scanner sc, Persona p){
         String nombre, cedula, telefono, email, entradaDatos;
         Empleado empleado; int opcion;
@@ -282,7 +290,7 @@ public class Usuario {
     }
 <<<<<<< HEAD
     
-    //Operaciones de Menú Clientes
+    //método para mostrar todos los clientes de la lista clientes
     public void listarClientes(){
         System.out.println("Listado de clientes registrados:");
         for(int i=0;i<clientes.size();i++){
@@ -290,7 +298,15 @@ public class Usuario {
         }
     }
     
+<<<<<<< HEAD
     public Cliente crearCliente(Scanner sc, Persona p, Persona rep){
+=======
+    //método para crear un cliente con su representante
+    /*Persona p será recibido por el parámetro Persona per de validarPersona
+    en el caso del cliente y Persona rep será recibido por ese mismo parámetro
+    cuando se intente crear el representante*/
+    public Cliente crearCliente(Scanner sc, Persona per, Persona rep){
+>>>>>>> 768ccf0 (Documentacion del codigo)
         String nombre, cedula, telefono, email;
         Persona persona;
         do{
@@ -310,28 +326,36 @@ public class Usuario {
                 System.out.println("Ingrese email del cliente:");
                 email = sc.nextLine();
             }while(!Validacion.validarEmail(email));
+<<<<<<< HEAD
             persona = new Persona(cedula, nombre, telefono, email);
         } while(!validarPersona(persona, p));
         String nombreR, cedulaR, telefonoR, emailR;
+=======
+            cliente = new Persona(cedula, nombre, telefono, email);
+        } while(!validarPersona(cliente, per));
+        
+        String cedulaR, nombreR, telefonoR, emailR;
+>>>>>>> 768ccf0 (Documentacion del codigo)
         Persona representante;
         do{
-            do{
+            do {
                 System.out.println("Ingrese cedula del Representante (10 dígitos):");
                 cedulaR = sc.nextLine();
-            }while(!Validacion.validarEntero(cedulaR) || cedulaR.length()!=10);
-            do{
+            } while (!Validacion.validarEntero(cedulaR) || cedulaR.length() != 10);
+            do {
                 System.out.println("Ingrese nombre del Representante:");
                 nombreR = sc.nextLine();
-            }while(!Validacion.validarNombre(nombreR));
-            do{
+            } while (!Validacion.validarNombre(nombreR));
+            do {
                 System.out.println("Ingrese telefono del Representante (10 dígitos):");
                 telefonoR = sc.nextLine();
-            }while(!Validacion.validarEntero(telefonoR) || telefonoR.length()!=10);
-            do{
+            } while (!Validacion.validarEntero(telefonoR) || telefonoR.length() != 10);
+            do {
                 System.out.println("Ingrese email del Representante:");
                 emailR = sc.nextLine();
-            }while(!Validacion.validarEmail(emailR));
+            } while (!Validacion.validarEmail(emailR));
             representante = new Persona(cedulaR, nombreR, telefonoR, emailR);
+<<<<<<< HEAD
         } while(!validarPersona(representante, rep));
         return new Cliente(cedula, nombre, telefono, email, representante);
     }
@@ -340,18 +364,43 @@ public class Usuario {
 =======
 >>>>>>> 38c5eea (Implementación de métodos relacionados a la clase Empleado en Usuario)
 =======
+=======
+            if(representante.equals(cliente)){
+                System.out.println("Alguno de los datos ingresados coincide con los de esta persona: ");
+                System.out.println(cliente);
+            }    
+        } while (!validarPersona(representante, rep) || representante.equals(cliente));
+        return new Cliente(cedula, nombre, telefono, email, representante);
+    }
+    
+    //método que verifica si es posible crear la cita usando el contains
+    /*Los criterios para que citas.contains(cita) dé true se encuentran en el equals de la
+    clase Cita. Si no es posible crear la cita, se imprimen las posibles razones*/
+>>>>>>> 768ccf0 (Documentacion del codigo)
     public void crearCita(Cita cita){
-        if(!citas.contains(cita)){
-            System.out.println("Datos de la cita creada:");
-            System.out.println(cita);
-            citas.add(cita);
-        } else {
+        if(citas.contains(cita)){
             System.out.println("No se pudo crear la cita por una de las siguientes razones:");
             System.out.println("1. Ya existe otra cita con ese encargado a esa fecha y hora");
             System.out.println("2. El cliente ya tiene otra cita a esa fecha y hora");
+        } else if (!cita.getServicio().getEstado()) {
+            System.out.println("No se pudo crear la cita por la siguente razón:");
+            System.out.println("El servicio escogido se encuentra en estado Inactivo");
+        }else if (!cita.getEncargadoServicio().getEstado()){
+            System.out.println("No se pudo crear la cita la siguiente razón:");
+            System.out.println("El encargado escogido se encuentra en estado Inactivo");
+        }else if (!cita.getEncargadoServicio().getListaServicios().contains(cita.getServicio())){
+            System.out.println("No se pudo crear la cita la razón:");
+            System.out.println("El empleado escogido no ofrece tal servicio");
+        } else {
+            System.out.println("Datos de la cita creada:");
+            System.out.println(cita);
+            citas.add(cita);
         }
     }
     
+    /*método que busca aquellas citas de un cliente en particular que no se encuentren
+    en el atributo Cita de los objetos de tipo Atencion en la lista atenciones, y las
+    agrega a una lista*/
     public ArrayList<Cita> buscarCitasPendientes(String cedula){
         Cliente cliente = new Cliente(cedula);
         ArrayList<Cita> citasAtendidas = new ArrayList<>();
@@ -367,6 +416,9 @@ public class Usuario {
         return citasPendientes;
     }
     
+    /*método que después de buscar las citas pendientes con el método anterior,
+    se las muestra al usuario y este escoge la que quiere eliminar por un índice
+    que se genera al momento de enlistarlas*/
     public void eliminarCita(Scanner sc, String cedula){
         ArrayList<Cita> citasPendientes = buscarCitasPendientes(cedula);
         if(citasPendientes.isEmpty()){
@@ -390,6 +442,8 @@ public class Usuario {
         }
     }
     
+    /*método que recibe una fecha y busca aquellas citas cuya fecha coincida
+    con las de este parámetro*/
     public void consultarCitas(String fecha){
         ArrayList<Cita> citasxFecha = new ArrayList<>();
         for(Cita cita: citas){
@@ -409,7 +463,8 @@ public class Usuario {
 >>>>>>> d271865 (Implementacion metodos relacionados a la clase Cita en Usuario)
 =======
     
-    //Operaciones de Menú Atención
+    /*método para mostrar las atenciones ya sea por cédula del empleado,
+    cédula del cliente o por una fecha*/
     public void consultarAtenciones(Scanner sc, int opcion){
         ArrayList<Atencion> listaAtenciones = new ArrayList<>();
         String cedula, fecha;
@@ -474,10 +529,18 @@ public class Usuario {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> de7dcd3 (Implementación de métodos relacionados a la clase Atención en Usuario)
 =======
     
     public void inicializarSistema() {
+=======
+
+    //método que incializa las listas servicios, clientes, empleados, citas y atenciones
+    /*crea 3 servicios, 1 empleado que ofrece los 3 servicios, 2 cliente con sus
+    respectivos representantes, 3 citas y 1 atención*/
+    public void inicializarSistema(){
+>>>>>>> 768ccf0 (Documentacion del codigo)
         servicios = new ArrayList<>();
         servicios.add(new Servicio("Terapia de Lenguaje",15,22.50, true));
         servicios.add(new Servicio("Terapia Psicopedagógica",35,37.50, true));

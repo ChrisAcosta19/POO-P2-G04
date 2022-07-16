@@ -11,7 +11,7 @@ public class Persona {
     private String telefono;
     private String email;
     
-    //Constructor de Persona
+    //Constructores de Persona
     public Persona(String cedula, String nombre, String telefono, String email) {
         this.nombre = nombre;
         this.cedula = cedula;
@@ -56,4 +56,25 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
+<<<<<<< HEAD
+=======
+    
+    //metodo equals para comparar si dos personas son iguales
+    /*retornara verdadero si coinciden en al menos uno de los
+    siguientes atributos: cedula, telefono, email*/
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(obj != null && obj instanceof Persona) {
+            Persona p = (Persona) obj;
+            boolean mismaCedula = cedula.equals(p.cedula);
+            boolean mismoTelefono = telefono.equals(p.telefono);
+            boolean mismoEmail = email.equals(p.email);
+            return mismaCedula || mismoTelefono || mismoEmail;
+        }
+        return false;
+    }
+>>>>>>> 768ccf0 (Documentacion del codigo)
 }

@@ -11,7 +11,7 @@ public class Empleado extends Persona {
     private boolean estado; // true = Activo, false = Inactivo
     private ArrayList<Servicio> listaServicios;
       
-    //Constructor de la clase
+    //Constructores de la clase
     public Empleado(String cedula, String nombre, String telefono, String email, boolean estado) {
         super(cedula, nombre, telefono, email);
         this.estado = estado;

@@ -2,16 +2,9 @@ package test;
 import modelo.*;
 import java.util.*;
 
-/*
-Clase Main con las funcionalidades de:
-
-Buscar Servicio, Empleado y Cliente
-Crear Fecha y Hora
-Manejar el Sistema con un Usuario nuevo
-*/
 public class Main {
-  
-  public static Servicio buscarServicio(Scanner sc, Usuario usu) {
+    //método estático para buscar un servicio de la lista servicios de Usuario
+    public static Servicio buscarServicio(Scanner sc, Usuario usu) {
         int i = usu.servicios.size(), opcion;
         String entradaDatos;
         System.out.println("Seleccione 1 de los siguientes servicios: ");
@@ -29,7 +22,8 @@ public class Main {
         return usu.servicios.get(opcion - 1);
     }
   
-  public static Empleado buscarEmpleado(Scanner sc, Usuario usu) {
+    //método estático para buscar un empleado de la lista empleados de Usuario
+    public static Empleado buscarEmpleado(Scanner sc, Usuario usu) {
         int i = usu.empleados.size(), opcion;
         String entradaDatos;
         System.out.println("Seleccione 1 de los siguientes empleados: ");
@@ -47,7 +41,8 @@ public class Main {
         return usu.empleados.get(opcion - 1);
     }
 
-  public static Cliente buscarCliente(Scanner sc, Usuario usu) {
+    //método estático para buscar un cliente de la lista clientes de Usuario
+    public static Cliente buscarCliente(Scanner sc, Usuario usu) {
         int i = usu.clientes.size(), opcion;
         String entradaDatos;
         System.out.println("Seleccione 1 de los siguientes clientes: ");
@@ -65,38 +60,44 @@ public class Main {
         return usu.clientes.get(opcion - 1);
     }
   
-  public static String crearFecha(Scanner sc) {
+    //método estático para crear una fecha
+    //El formato es AAAA-MM-DD de la norma ISO 8601
+    public static String crearFecha(Scanner sc) {
         String fecha;
+        System.out.println("Para la fecha utilice la norma ISO 8601, es decir AAAA-MM-DD");
+        System.out.println("Por ejemplo 2020-03-02 sería 2 de marzo del 2020");
         do {
-            System.out.println("Ingrese el día (en 2 dígitos): ");
-            String dia = sc.nextLine();
-            System.out.println("Ingrese el mes (en 2 dígitos): ");
-            String mes = sc.nextLine();
-            System.out.println("Ingrese el año (en 4 dígitos): ");
-            String año = sc.nextLine();
-            fecha = año + "-" + mes + "-" + dia;
+            System.out.println("Ingrese una fecha:");            
+            fecha = sc.nextLine();
         } while (!Validacion.validarFecha(fecha));
         return fecha;
     }
-  
-  public static String crearHora(Scanner sc) {
-        String horario;
+    
+    //método estático para crear expresiones de hora
+    //El formato es hh-mm-ss de la norma ISO 8601
+    public static String crearHora(Scanner sc) {
+        String hora;
+        System.out.println("Para la hora utilice la norma ISO 8601, es decir hh:mm:ss");
+        System.out.println("donde hh está en formato 24 horas");
+        System.out.println("Por ejemplo 14:30:00 sería 2:30 p.m.");
+        System.out.println("Otro ejemplo 07:00:00 sería 7:00 a.m.");
         do {
-            System.out.println("Ingrese la hora (formato 24 horas y en 2 dígitos): ");
-            String hora = sc.nextLine();
-            System.out.println("Ingrese el minuto (en 2 dígitos): ");
-            String minuto = sc.nextLine();
-            horario = hora + ":" + minuto + ":00";
-        } while (!Validacion.validarHora(horario));
-        return horario;
+            System.out.println("Ingrese la hora: ");
+            hora = sc.nextLine();
+        } while (!Validacion.validarHora(hora));
+        return hora;
     }
   
-  public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Usuario usu = new Usuario();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in); //objeto Scanner para leer por teclado
+        Usuario usu = new Usuario(); //objeto usuario para usar sus métodos
         int opcion;
 
-        usu.inicializarSistema();
+        usu.inicializarSistema(); //creación de los objetos
+        /*en este lazo se muestra el menu principal donde se pide una opción de Menú
+        y luego según sea el caso del switch llama el método correspondiente de la clase Menu
+        Como se puede apreciar se pasa el objeto Scanner en cada método, esto se hace para
+        no tener que estar creando más objetos Scanner dentro de cada método*/
         do {
             opcion = Menu.menuPrincipal(sc);
             switch (opcion) {
@@ -122,6 +123,6 @@ public class Main {
                     System.out.println("Opción inválida, ingrese de nuevo\n");
             }
         } while (opcion != 6);
-        sc.close();
+        sc.close(); //Se cierra el objeto Scanner
     }
 }

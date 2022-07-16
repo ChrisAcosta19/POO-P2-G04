@@ -81,4 +81,20 @@ public class Servicio {
     public String toString(){
         return "Nombre: "+nombre+", Duración: "+duracion+", Precio: "+precio+", Estado:"+(estado?"Activo":"Inactivo");       
     }
+    
+    //método que compara si dos servicios son iguales
+    //Devuelve true si coinciden en todos los atributos
+    public boolean equals(Object obj){
+        if(this==obj){
+            return true;
+        } else if(obj != null && obj instanceof Servicio){
+            Servicio servicio = (Servicio) obj;
+            boolean mismoNombre = nombre.equals(servicio.nombre);
+            boolean mismaDuracion = duracion == servicio.duracion;
+            boolean mismoPrecio = precio == servicio.precio;
+            boolean mismoEstado = estado == servicio.estado;
+            return mismoNombre && mismaDuracion && mismoPrecio && mismoEstado;
+        }
+        return false;
+    }
 }

@@ -9,7 +9,7 @@ public class Cliente extends Persona {
     //Atributos de la clase
     private Persona datosRepresentante;
     
-    //Constructor de la clase
+    //Constructores de la clase
     public Cliente(String cedula, String nombre, String telefono, String email, Persona datosRepresentante) {
         super(cedula, nombre, telefono, email);
         this.datosRepresentante = datosRepresentante;

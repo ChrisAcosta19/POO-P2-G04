@@ -9,13 +9,24 @@ import java.util.Scanner;
  */
 
 public class Cita {
+<<<<<<< HEAD
     private String fecha,hora;
+=======
+    //Atributos de clase Cita
+    private String fecha;
+    private String hora;
+>>>>>>> 768ccf0 (Documentacion del codigo)
     private Cliente cliente;
     private Empleado encargadoServicio;
     
+<<<<<<< HEAD
     static Scanner sc = new Scanner(System.in);
     
     public Cita (String fecha , String hora, Cliente cliente, Empleado encargadoServicio){
+=======
+    //Constructor de la clase
+    public Cita(String fecha, String hora, Cliente cliente, Servicio servicio, Empleado encargadoServicio){
+>>>>>>> 768ccf0 (Documentacion del codigo)
         this.fecha = fecha;
         this.hora = hora;
         this.cliente = cliente;
@@ -91,7 +102,12 @@ public class Cita {
         return cedulaExiste;
     }
     
+<<<<<<< HEAD
     public String getFecha(){
+=======
+    //Getters
+    public String getFecha() {
+>>>>>>> 768ccf0 (Documentacion del codigo)
         return fecha;
     }
     public String getHora(){
@@ -104,10 +120,39 @@ public class Cita {
         return encargadoServicio;
     }
     
+    //metodo toString para mostrar informacion del objeto
     @Override
     public String toString(){
+<<<<<<< HEAD
         return "Fecha: "+ fecha + "\nHora: " + hora + 
                 "\nCliente: " + cliente.getNombre() + 
                 "\nEncargado de la cita: " + encargadoServicio.getNombre();
+=======
+        return "Fecha: " +fecha+ ", Hora: " +hora+ ", Cliente: " +cliente.getNombre()
+                +", Encargado de la cita: "+encargadoServicio.getNombre();
+    }
+    
+    
+    /*metodo equals para comparar si dos citas son iguales
+      primero evalua si coinciden en fecha, hora y encargado
+      si lo anterior es falso, entonces evalua si coinciden en fecha, hora y cliente
+    */
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        } else if(obj != null && obj instanceof Cita) {
+            Cita cita = (Cita) obj;
+            boolean mismaFecha = fecha.equals(cita.fecha);
+            boolean mismaHora = hora.equals(cita.hora);
+            boolean mismoCliente = cliente.equals(cita.cliente);
+            boolean mismoEncargado = encargadoServicio.equals(cita.encargadoServicio);
+            if(mismaFecha && mismaHora && mismoEncargado){
+                return true;
+            }
+            return mismaFecha && mismaHora && mismoCliente;
+        }
+        return false;
+>>>>>>> 768ccf0 (Documentacion del codigo)
     }
 }
