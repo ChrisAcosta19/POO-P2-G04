@@ -1,10 +1,14 @@
 modelo\Atencion.class
 modelo\Servicio.class
+test\Main.class
+gui\PrimaryController.class
+modelo\Cita.class
+gui\SecondaryController.class
+modelo\Empleado.class
+module-info.class
 test\Usuario.class
+gui\App.class
 modelo\Cliente.class
 modelo\Persona.class
-test\Main.class
-modelo\Cita.class
 test\Validacion.class
-modelo\Empleado.class
 test\Menu.class
