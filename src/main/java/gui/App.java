@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static String pathImg = "src/main/resources/vista/";
 
     @Override
     public void start(Stage stage) throws IOException {
