@@ -49,7 +49,7 @@ public class PrimaryController{
     
     
     private void cargarIcons() {
-        System.out.println("fyjetyjjjjjjjjjj");
+        System.out.println("Inicia el metodo");
         InputStream input = null;
         InputStream input1 = null;
         InputStream input2 = null;
@@ -59,6 +59,7 @@ public class PrimaryController{
             input = App.class.getResource(App.pathImg + "iconCitas.png").openStream();
             Image image = new Image(input, 100, 100, false, false);
             iconCitas.setImage(image);
+            
             input1 = App.class.getResource(App.pathImg + "iconServicios.png").openStream();
             Image image1 = new Image(input1, 100, 100, false, false);
             iconSrv.setImage(image1);
@@ -72,8 +73,21 @@ public class PrimaryController{
             Image image4 = new Image(input4, 100, 100, false, false);
             iconClientes.setImage(image4);
         } catch (Exception ex) {
+            System.out.println(ex);
             System.out.println("No se pudo cargar los iconos");
-        } 
+        } finally {
+                try {
+                    input.close();
+                    input1.close();
+                    input2.close();
+                    input3.close();
+                    input4.close();
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.out.println("no se pudo cerrar");
+
+                }
+        }
     }
     
     @FXML
