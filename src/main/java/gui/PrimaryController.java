@@ -72,8 +72,21 @@ public class PrimaryController{
             Image image4 = new Image(input4, 100, 100, false, false);
             iconClientes.setImage(image4);
         } catch (Exception ex) {
+            System.out.println(ex);
             System.out.println("No se pudo cargar los iconos");
-        } 
+        } finally {
+                try {
+                    input.close();
+                    input1.close();
+                    input2.close();
+                    input3.close();
+                    input4.close();
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                    System.out.println("no se pudo cerrar");
+
+                }
+        }
     }
     
     @FXML
