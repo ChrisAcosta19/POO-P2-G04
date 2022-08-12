@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -49,26 +50,25 @@ public class PrimaryController{
     
     
     private void cargarIcons() {
-        System.out.println("fyjetyjjjjjjjjjj");
         InputStream input = null;
         InputStream input1 = null;
         InputStream input2 = null;
         InputStream input3 = null;
         InputStream input4 = null;
         try {
-            input = App.class.getResource(App.pathImg + "iconCitas.png").openStream();
+            input = new FileInputStream(App.pathImg + "iconCitas.png");
             Image image = new Image(input, 100, 100, false, false);
             iconCitas.setImage(image);
-            input1 = App.class.getResource(App.pathImg + "iconServicios.png").openStream();
+            input1 = new FileInputStream(App.pathImg + "iconServicios.png");
             Image image1 = new Image(input1, 100, 100, false, false);
             iconSrv.setImage(image1);
-            input2 = App.class.getResource(App.pathImg + "iconAtenciones.png").openStream();
+            input2 = new FileInputStream(App.pathImg + "iconAtenciones.png");
             Image image2 = new Image(input2, 100, 100, false, false);
             iconAtens.setImage(image2);
-            input3 = App.class.getResource(App.pathImg + "iconEmpleados.png").openStream();
+            input3 = new FileInputStream(App.pathImg + "iconEmpleados.png");
             Image image3 = new Image(input3, 100, 100, false, false);
             iconEmpl.setImage(image3);
-            input4 = App.class.getResource(App.pathImg + "iconClientes.png").openStream();
+            input4 = new FileInputStream(App.pathImg + "iconClientes.png");
             Image image4 = new Image(input4, 100, 100, false, false);
             iconClientes.setImage(image4);
         } catch (Exception ex) {
@@ -104,6 +104,4 @@ public class PrimaryController{
     private void menuCitas(ActionEvent event) throws IOException{
         App.setRoot("citas");
     }
-
-    
 }
